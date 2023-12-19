@@ -9,7 +9,10 @@ include_directories(${CURL_INCLUDE_DIRS})
 
 file(GLOB_RECURSE source_files ./*)
 add_library(httpclient STATIC ${source_files})
+set_target_properties(httpclient PROPERTIES PUBLIC_HEADER "HTTPClient.h;CurlHandle.h")
 
-install(TARGETS httpclient)
+install(TARGETS httpclient
+  PUBLIC_HEADER DESTINATION include/httpclient
+  )
 
 ENDIF()
